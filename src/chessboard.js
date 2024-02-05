@@ -56,6 +56,20 @@ class ChessBoard {
   getPieceColorAtPosition(position) {
     return this.board[position.row][position.column].color;
   }
+
+  isSameColor(position1, position2) {
+    return (
+      this.getPieceColorAtPosition(position1) ===
+      this.getPieceColorAtPosition(position2)
+    );
+  }
+
+  isDifferentColor(position1, position2) {
+    return (
+      this.getPieceColorAtPosition(position1) !==
+      this.getPieceColorAtPosition(position2)
+    );
+  }
 }
 
 module.exports = ChessBoard;

@@ -166,5 +166,30 @@ describe("ChessBoard", () => {
     });
   });
 
+  describe("Color of pieces", () => {
+    it("should check if two pieces have the same color", () => {
+      // GIVEN
+      const position1 = { row: 1, column: 1 };
+      const position2 = { row: 1, column: 2 };
+      // WHEN
+      const isSameColor = chessBoard.isSameColor(position1, position2);
+      // THEN
+      expect(isSameColor).toBe(true);
+    });
+
+    it("should check if two pieces have different colors", () => {
+      // GIVEN
+      const position1 = { row: 1, column: 1 };
+      const position2 = { row: 6, column: 1 };
+      // WHEN
+      const isDifferentColor = chessBoard.isDifferentColor(
+        position1,
+        position2
+      );
+      // THEN
+      expect(isDifferentColor).toBe(true);
+    });
+  });
+
   describe("Movement of King", () => {});
 });
