@@ -189,6 +189,32 @@ describe("ChessBoard", () => {
       // THEN
       expect(isDifferentColor).toBe(true);
     });
+
+    it("should check if a position is occupied by an opponent", () => {
+      // GIVEN
+      const position = { row: 6, column: 1 };
+      const color = "Black";
+      // WHEN
+      const isOccupiedByOpponent = chessBoard.isOccupiedByOpponent(
+        position,
+        color
+      );
+      // THEN
+      expect(isOccupiedByOpponent).toBe(true);
+    });
+
+    it("should check if a position is not occupied by an opponent", () => {
+      // GIVEN
+      const position = { row: 1, column: 1 };
+      const color = "Black";
+      // WHEN
+      const isOccupiedByOpponent = chessBoard.isOccupiedByOpponent(
+        position,
+        color
+      );
+      // THEN
+      expect(isOccupiedByOpponent).toBe(false);
+    });
   });
 
   describe("Movement of King", () => {});

@@ -70,6 +70,8 @@ class ChessBoard {
       this.getPieceColorAtPosition(position2)
     );
   }
+
+  isOccupiedByOpponent(position, color) {}
 }
 
 module.exports = ChessBoard;
