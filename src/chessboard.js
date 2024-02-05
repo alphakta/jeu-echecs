@@ -30,6 +30,32 @@ class ChessBoard {
 
     return board;
   }
+
+  getBoard() {
+    return this.board;
+  }
+
+  movePiece(from, to) {
+    const piece = this.board[from.row][from.column];
+    this.board[from.row][from.column] = null;
+    this.board[to.row][to.column] = piece;
+  }
+
+  isPieceAtPosition(position) {
+    return this.board[position.row][position.column] !== null;
+  }
+
+  getPieceAtPosition(position) {
+    return this.board[position.row][position.column];
+  }
+
+  getPieceNameAtPosition(position) {
+    return this.board[position.row][position.column].name;
+  }
+
+  getPieceColorAtPosition(position) {
+    return this.board[position.row][position.column].color;
+  }
 }
 
 module.exports = ChessBoard;
