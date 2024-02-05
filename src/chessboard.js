@@ -46,6 +46,7 @@ class ChessBoard {
   }
 
   getPieceAtPosition(position) {
+    console.log(position);
     return this.board[position.row][position.column];
   }
 
@@ -54,7 +55,8 @@ class ChessBoard {
   }
 
   getPieceColorAtPosition(position) {
-    return this.board[position.row][position.column].color;
+    const piece = this.getPieceAtPosition(position);
+    return piece === null ? null : piece.color;
   }
 
   isSameColor(position1, position2) {
@@ -71,7 +73,23 @@ class ChessBoard {
     );
   }
 
-  isOccupiedByOpponent(position, color) {}
+  isOccupiedByOpponent(position, color) {
+    if (!this.isPieceAtPosition(position)) {
+      return false;
+    }
+
+    const pieceColor = this.getPieceColorAtPosition(position);
+
+    return pieceColor !== null && pieceColor !== color;
+  }
+
+  isValidMove(from, to) {
+    const fromPiece = this.getPieceAtPosition(from);
+    const toPiece = this.getPieceAtPosition(to);
+
+    console.log(fromPiece);
+    console.log(toPiece);
+  }
 }
 
 module.exports = ChessBoard;

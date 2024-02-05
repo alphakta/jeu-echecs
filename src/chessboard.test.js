@@ -161,6 +161,7 @@ describe("ChessBoard", () => {
       const position = { row: 1, column: 1 };
       // WHEN
       const pieceColor = chessBoard.getPieceColorAtPosition(position);
+      console.log(pieceColor);
       // THEN
       expect(pieceColor).toBe("Black");
     });
@@ -192,8 +193,8 @@ describe("ChessBoard", () => {
 
     it("should check if a position is occupied by an opponent", () => {
       // GIVEN
-      const position = { row: 6, column: 1 };
-      const color = "Black";
+      const position = { row: 1, column: 1 };
+      const color = "White";
       // WHEN
       const isOccupiedByOpponent = chessBoard.isOccupiedByOpponent(
         position,
@@ -217,5 +218,130 @@ describe("ChessBoard", () => {
     });
   });
 
-  describe("Movement of King", () => {});
+  describe("Movement of King", () => {
+    it("should move the King to a valid position", () => {
+      // GIVEN
+      const from = { row: 0, column: 4 };
+      const to = { row: 1, column: 4 };
+      // WHEN
+      const isValidMove = chessBoard.isValidMove(from, to);
+      // THEN
+      expect(isValidMove).toBe(true);
+    });
+
+    it("should not move the King to an invalid position", () => {
+      // GIVEN
+      const from = { row: 0, column: 4 };
+      const to = { row: 2, column: 4 };
+      // WHEN
+      const isValidMove = chessBoard.isValidMove(from, to);
+      // THEN
+      expect(isValidMove).toBe(false);
+    });
+  });
+  describe("Movement of Queen", () => {
+    it("should move the Queen to a valid position", () => {
+      // GIVEN
+      const from = { row: 0, column: 3 };
+      const to = { row: 3, column: 3 };
+      // WHEN
+      const isValidMove = chessBoard.isValidMove(from, to);
+      // THEN
+      expect(isValidMove).toBe(true);
+    });
+
+    it("should not move the Queen to an invalid position", () => {
+      // GIVEN
+      const from = { row: 0, column: 3 };
+      const to = { row: 3, column: 4 };
+      // WHEN
+      const isValidMove = chessBoard.isValidMove(from, to);
+      // THEN
+      expect(isValidMove).toBe(false);
+    });
+  });
+  describe("Movement of Rook", () => {
+    it("should move the Rook to a valid position", () => {
+      // GIVEN
+      const from = { row: 0, column: 0 };
+      const to = { row: 3, column: 0 };
+      // WHEN
+      const isValidMove = chessBoard.isValidMove(from, to);
+      // THEN
+      expect(isValidMove).toBe(true);
+    });
+
+    it("should not move the Rook to an invalid position", () => {
+      // GIVEN
+      const from = { row: 0, column: 0 };
+      const to = { row: 3, column: 3 };
+      // WHEN
+      const isValidMove = chessBoard.isValidMove(from, to);
+      // THEN
+      expect(isValidMove).toBe(false);
+    });
+  });
+  describe("Movement of Bishop", () => {
+    it("should move the Bishop to a valid position", () => {
+      // GIVEN
+      const from = { row: 0, column: 2 };
+      const to = { row: 2, column: 0 };
+      // WHEN
+      const isValidMove = chessBoard.isValidMove(from, to);
+      // THEN
+      expect(isValidMove).toBe(true);
+    });
+
+    it("should not move the Bishop to an invalid position", () => {
+      // GIVEN
+      const from = { row: 0, column: 2 };
+      const to = { row: 3, column: 3 };
+      // WHEN
+      const isValidMove = chessBoard.isValidMove(from, to);
+      // THEN
+      expect(isValidMove).toBe(false);
+    });
+  });
+  describe("Movement of Knight", () => {
+    it("should move the Knight to a valid position", () => {
+      // GIVEN
+      const from = { row: 0, column: 1 };
+      const to = { row: 2, column: 0 };
+      // WHEN
+      const isValidMove = chessBoard.isValidMove(from, to);
+      // THEN
+      expect(isValidMove).toBe(true);
+    });
+
+    it("should not move the Knight to an invalid position", () => {
+      // GIVEN
+      const from = { row: 0, column: 1 };
+      const to = { row: 3, column: 3 };
+      // WHEN
+      const isValidMove = chessBoard.isValidMove(from, to);
+      // THEN
+      expect(isValidMove).toBe(false);
+    });
+  });
+  describe("Movement of Pawn", () => {
+    it("should move the Pawn to a valid position", () => {
+      // GIVEN
+      const from = { row: 1, column: 1 };
+      const to = { row: 3, column: 1 };
+      // WHEN
+      const isValidMove = chessBoard.isValidMove(from, to);
+      // THEN
+      expect(isValidMove).toBe(true);
+    });
+
+    it("should not move the Pawn to an invalid position", () => {
+      // GIVEN
+      const from = { row: 1, column: 1 };
+      const to = { row: 3, column: 3 };
+      // WHEN
+      const isValidMove = chessBoard.isValidMove(from, to);
+      // THEN
+      expect(isValidMove).toBe(false);
+    });
+  });
 });
